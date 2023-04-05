@@ -10,6 +10,29 @@ async function readFile(req: express.Request, res: express.Response, next: expre
     next(err);
   }
 }
+
+async function getSales(req: express.Request, res: express.Response, next: express.NextFunction) {
+  try {
+    res.send(await fileService.getSales());
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function getSale(req: express.Request, res: express.Response, next: express.NextFunction) {
+  try {
+    const { sale_id } = req.params;
+    if (!sale_id) {
+      throw new Error("sale_id é obrigatório!!");
+    }
+    res.send(await fileService.getSale(+sale_id));
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
-  readFile
+  readFile,
+  getSales,
+  getSale
 }

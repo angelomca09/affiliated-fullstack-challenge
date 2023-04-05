@@ -1,6 +1,6 @@
 function stringToNumber(text: string) {
 
-  return ((+text) / 10).toFixed(2)
+  return ((+text) / 100)
 }
 
 export {

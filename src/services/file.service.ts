@@ -12,7 +12,7 @@ async function parseFile(buffer: Buffer) {
     type: line.substring(0, 1),
     date: line.substring(1, 26),
     product: line.substring(26, 56).trim(),
-    value: stringToNumber(line.substring(56, 66)),
+    value: stringToNumber(line.substring(56, 66)) / 100,
     seller: line.substring(66, 86).trim(),
   }))
 

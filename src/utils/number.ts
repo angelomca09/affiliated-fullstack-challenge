@@ -1,6 +1,6 @@
 function stringToNumber(text: string) {
-
-  return ((+text) / 100)
+  if (isNaN(+text)) throw Error(text + " is not a number to be converted.")
+  return ((+text))
 }
 
 export {

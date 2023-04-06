@@ -1,0 +1,38 @@
+.App {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.add * {
+  margin-bottom: 0;
+}
+
+.contained {
+  width: fit-content;
+  text-align: center;
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+.cards {
+  justify-content: start;
+}
+
+.centered {
+  display: grid;
+  place-items: center;
+}
+
+article.centered {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+article footer {
+  display: flex;
+  gap: 1rem;
+}

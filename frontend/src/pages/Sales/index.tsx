@@ -28,7 +28,7 @@ export const Sales = () => {
       <main className="container cards">
         <Title title="All Sales" />
         {loading ? <ClipLoader></ClipLoader> : <></>}
-        {sellers.length &&
+        {!!sellers.length &&
           <table>
             <thead>
               <tr>

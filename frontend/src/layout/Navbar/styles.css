@@ -1,0 +1,11 @@
+nav.container-fluid {
+  border-bottom: 1px solid #374956;
+}
+
+ul li a {
+  margin-left: 1rem;
+}
+
+a.active {
+  background: #374956;
+}

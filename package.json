@@ -4,6 +4,7 @@
   "description": "The objective is to help creator-affiliate relations in sales, creating an interface that receives input files and return sales data.",
   "main": "index.js",
   "scripts": {
+    "install:all": "npm i && npm --prefix client i",
     "build": "rimraf ./build && tsc",
     "build:UI": "rimraf ./client/dist && npm run --prefix client build",
     "copywww": "copyfiles -u 2 'client/dist/**/*' build/www/",

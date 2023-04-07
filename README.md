@@ -1,6 +1,8 @@
 # Affiliated App - Fullstack Challenge
 
-The objective is to help creator-affiliate relations in sales, creating an interface that receives input files and return sales data.
+The objective is to help creator-affiliate relations in sales, developing an interface that receives input files and return sales data.
+
+This project is a [challenge](https://lab.coodesh.com/angelomca09/fullstack-afiliados) by [Coodesh](https://coodesh.com/).
 
 ## Technologies
 
@@ -12,11 +14,11 @@ The objective is to help creator-affiliate relations in sales, creating an inter
 
 ## How to run
 
-You can run the project with docker or locally.
+You can run the project with Docker or locally.
 
 ### Running on Docker
 
-Considering you already have [Docker](https://docs.docker.com/get-docker/) installed on your machine, to run the docker container you will need use the commands bellow:
+Considering you already have [Docker](https://docs.docker.com/get-docker/) installed on your machine, to run the docker container you will need to use the commands bellow:
 
 ```bash
 #to build the image (you can choose the <image_name>)
@@ -29,7 +31,7 @@ $ docker build -t <image_name> .
 $ docker run -dp 3000:3000 <image_name>
 ```
 
-With the container on, just acces http://localhost:3000 on any Browser.
+With the container up and running, just access http://localhost:3000 on any browser.
 
 ### Running locally
 
@@ -60,15 +62,15 @@ There are some tests coverage on the backend side. Test files are found at `src\
 
 ## Solving the problem
 
-To solve the main problem of receiving files, extract and save data from them, I broke the challenge into little pieces.
+To solve the main problem of receive, extract and save data from files, I broke the challenge into little pieces.
 
 ### File Upload
 
-First, we need to upload the file. For that I used `FormData` from JS. That's a simple way to POST files to APIs. The `express-fileupload` middleware was used to make it possible to access the file sent via `req.files` from requisitions.
+First, we need to upload the file. For that I used `FormData` from JS. That's a simple way to POST forms containing files to APIs. The `express-fileupload` middleware was used to make it possible to access the file sent via `req.files` from requisitions.
 
 ### File Parsing
 
-With the file on hands, now it's time to parse de data. The solution here was to create a `service` so we could isolate the responsabilities of parsing files to it. For each line of the .txt file uploaded, our service maps it according to the table bellow.
+With the file on hands, now it's time to parse de data. The solution here was to create a `service` so we could isolate the responsabilities of parsing files to it. For each line of the .txt file uploaded, our service maps it according to the table bellow:
 
 | Field   | Start | End | Length | Description                |
 | ------- | ----- | --- | ------ | -------------------------- |
@@ -78,9 +80,18 @@ With the file on hands, now it's time to parse de data. The solution here was to
 | Value   | 57    | 66  | 10     | Transaction value in cents |
 | Seller  | 67    | 86  | 20     | Seller's name              |
 
+The `Type` field value is described by the table bellow:
+
+| Type | Description        | Nature | Sign |
+| ---- | ------------------ | ------ | ---- |
+| 1    | Creator Sale       | In     | +    |
+| 2    | Affiliate Sale     | In     | +    |
+| 3    | Paid Comission     | Out    | -    |
+| 4    | Received Comission | In     | +    |
+
 ### File Saving
 
-File uploaded and parsed. Finally, now we save the data.
+File uploaded and parsed, now we can finally save the data.
 As stated before, the databank chosen was `Postgres`.
 To use it within our application, the `Sequelize` ORM was put in action, so that it would be easier to save and retrieve that data latter.
 

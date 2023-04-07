@@ -35,6 +35,7 @@ With the container up and running, just access http://localhost:3000 on any brow
 
 ### Running locally
 
+First you need to have [Node](https://nodejs.org/en/download) installed on your machine.
 To quickly install all dependencies in both projects (Node and React), use the script:
 
 ```bash

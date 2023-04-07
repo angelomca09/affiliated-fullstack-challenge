@@ -10,6 +10,7 @@
     "copywww": "copyfiles -u 2 'client/dist/**/*' build/www/",
     "test": "jest --no-cache",
     "start:dev": "npx nodemon",
+    "start:UI": "npm run --prefix client dev",
     "start:prod": "npm run build && npm run build:UI && npm run copywww && node build/index.js "
   },
   "repository": {

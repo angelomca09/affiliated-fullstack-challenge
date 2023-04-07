@@ -181,4 +181,6 @@ This request return a object of the above type `ILogin`.
 
 ## Aditional Info
 
+Here is the [presentation link](https://www.loom.com/share/59adfc88bb1b440fb87a7ec4316ee273).
+
 This project is a Tech Chalenge runned by [Coodesh](https://coodesh.com/).

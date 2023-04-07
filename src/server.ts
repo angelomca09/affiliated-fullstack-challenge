@@ -9,19 +9,17 @@ const server = express();
 
 //* INTERFACE SERVING *//
 server.use(express.static(path.join(__dirname, "www")));
-server.use(express.static(path.join(__dirname, "www", "assets")));
 
 server.use(express.json());
 server.use(upload());
 server.use(cors());
-
 
 //#region //* ROUTES *//
 
 //* Routes without auth
 
 import authRoute from "./routes/auth.route";
-server.use("/auth", authRoute);
+server.use("/api/auth", authRoute);
 
 //* BasicAuth
 server.use(
@@ -33,7 +31,12 @@ server.use(
 
 //* Routes with Auth
 import fileRoute from "./routes/file.route";
-server.use(fileRoute)
+server.use("/api", fileRoute)
+
+// Handles any requests that don't match the ones above
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/www/index.html'));
+});
 
 //#endregion
 

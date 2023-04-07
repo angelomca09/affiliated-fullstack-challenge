@@ -53,8 +53,8 @@ export const Login = () => {
               <button className={`outline ${logintype ? "secondary" : ""}`} onClick={() => handleLoginTypeClick(false)} >Log In</button>
             </div>
             <form>
-              <input type="text" name="login" placeholder="Login" aria-label="Login" autoComplete="nickname" required value={username} onChange={(event) => setUsername(event.target.value)} />
-              <input type="password" name="password" placeholder="Password" aria-label="Password" autoComplete="current-password" required value={password} onChange={(event) => setPassword(event.target.value)} />
+              <input type="text" name="login" placeholder="Login" aria-label="Login" required value={username} onChange={(event) => setUsername(event.target.value)} />
+              <input type="password" name="password" placeholder="Password" aria-label="Password" required value={password} onChange={(event) => setPassword(event.target.value)} />
 
               <button type="submit" disabled={!canLogin} onClick={handleLoginClick}>{logintype ? "Sign Up" : "Log In"}</button>
             </form>
